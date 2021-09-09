@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java Script Assignment 1</title>
+    <style>
+        .main
+        {
+            height:100%;
+            width:100;
+            background-color:white;
+        }
+        .header
+        {
+            height:15%;
+            width:100%;
+        }
+        .body
+        {
+            height:85%;
+            width:30%;
+            padding:25px 25px;
+            border: 1px solid black;
+            margin-top:100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <h1 style="margin-top:3%" align="center"><u> Application Form</u></h1>
+        </div>
+        <div class="body">
+           <form onsubmit="return myFunction()">
+
+               Name:<input style="float:right" type="text" id="fname" name="firstname" ><br><br>
+               Age(between 10 and 100):<input style="float:right; width:50px" type="text" id="age" name="firstname" ><br><br>
+               Email id:<input style="float:right" type="text" id="email" name="firstname" ><br><br>
+               Mobile no:<input style="float:right" type="text" id="mno" name="firstname" ><br><br>
+
+               <input style="float:right" id="submit" type="submit" value="Submit">
+               <p id="hey" ></p>
+            </form>
+        </div>
+    </div>
+<script>
+    function myFunction()
+    {
+        var name=document.getElementById("fname").value;
+        var age=document.getElementById("age").value;
+        var email=document.getElementById("email").value;
+        var at=email.indexOf("@");
+        var mno=document.getElementById("mno").value;
+        flag="true";
+        const regexExp = /^[6-9]\d{9}$/gi;
+        if(name.length<10)
+        {
+            alert("name is mandatory");
+            flag="false";
+        }
+        if(age<0||age>110||age.length<1)
+        {
+            alert("age is mandatory and should be between 0 and 110");
+            flag="false";
+        }
+        if(email.length<1)
+        {
+            alert("email is mandatory");
+            flag="false";
+        }else if(at == -1)
+        {
+            alert("not a valid email");
+            flag="false";
+        }
+        if(mno.length)
+        {
+            if(! regexExp.test(mno))
+            {
+                alert("enter an indian mobile no");
+                flag="false";
+            }
+        }
+        if(flag == "false")
+        {
+            return false
+        }
+    }
+
+
+</script>
+</body>
+</html>
